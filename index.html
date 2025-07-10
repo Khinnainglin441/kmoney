@@ -13,6 +13,7 @@
       --card-light: #fff;
       --card-dark: #333;
       --primary: #007BFF;
+      --green-led: #00ff00;
     }
     [data-theme="light"] {
       background-color: var(--bg-light);
@@ -98,7 +99,7 @@
       border-radius: 8px;
       padding: 10px 0;
       margin: 15px 0;
-      background: rgba(0, 0, 0, 0.05);
+      background: #000;
     }
     .marquee-text {
       display: inline-block;
@@ -106,10 +107,41 @@
       animation: marquee 10s linear infinite;
       font-weight: bold;
       font-size: 16px;
+      color: var(--green-led);
+      font-family: 'Courier New', monospace;
     }
     @keyframes marquee {
       0% { transform: translate(0, 0); }
       100% { transform: translate(-100%, 0); }
+    }
+
+    /* Image styles */
+    .image-gallery {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 10px;
+    }
+    .image-gallery img {
+      width: 48%;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    /* Footer styles */
+    .footer {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
   </style>
 </head>
@@ -119,7 +151,7 @@
       <button class="logo-button" onclick="toggleTheme()">🌓</button>
     </div>
 
-    <!-- Running Text (LED Style, Fixed Only) -->
+    <!-- Running Text -->
     <div class="marquee-container">
       <div class="marquee-text">ဒီ App ကို ကိုယ်တိုင်သုံးဖို့ရေးထားတာပါ 🇹🇭 ➜ 🇲🇲 ငွလဲနှုန်းသိချင်တဲ့သူတွေအတွက်</div>
     </div>
@@ -144,12 +176,26 @@
     <input type="number" id="mmkInput" placeholder="Enter MMK" oninput="convertMMK()"/>
     <div class="result" id="thbResult">THB: 0</div>
 
+    <!-- Medium Size Images -->
+    <div class="image-gallery">
+      <img src="https://via.placeholder.com/200x150.png?text=Image+1" alt="Image 1">
+      <img src="https://via.placeholder.com/200x150.png?text=Image+2" alt="Image 2">
+    </div>
+
     <h3>📝 My Note</h3>
     <div class="note-box">
       ဒီ App လေးကို ကိုယ်တိုင်သုံးဖို့လုပ်ထားတာပါ။
       ထိုင်းကနေမြန်မာသွားတဲ့ ငွလဲနှုန်းနဲ့
       မြန်မာကနေထိုင်းပြန်တဲ့ အချိုးကို ခွဲပြထားတယ်။
       Website မှာသူများပြင်လို့မရဘဲ ကိုယ့်တင်ထားတာကိုပဲဖတ်လို့ရပါတယ်။
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>
+        📘 <a href="https://facebook.com/yourpage" target="_blank">Facebook Admin</a> |
+        ☎️ <a href="tel:+959123456789">+95 9 123 456 789</a>
+      </p>
     </div>
   </div>
 
