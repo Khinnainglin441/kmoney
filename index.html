@@ -32,7 +32,7 @@
       margin: auto;
       background-color: var(--card-light);
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       transition: background 0.3s;
     }
@@ -46,7 +46,7 @@
       margin-top: 10px;
       display: block;
     }
-    input, button {
+    input, button, textarea {
       width: 100%;
       padding: 10px;
       font-size: 16px;
@@ -64,45 +64,55 @@
       text-align: center;
       margin-bottom: 15px;
     }
-    .calculator input {
-      margin: 5px 0;
+    .toggle-button {
+      border: none;
+      background-color: #ddd;
+      border-radius: 50%;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s;
+    }
+    .toggle-button:hover {
+      background-color: #bbb;
+    }
+    .note {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="toggle-mode">
-      <button onclick="toggleTheme()">🌗 Toggle Dark/Light</button>
+      <button class="toggle-button" onclick="toggleTheme()">🌓</button>
     </div>
 
     <h2>🇹🇭 Thai – Myanmar 🇲🇲</h2>
 
     <label>💱 Exchange Rate (1 THB ➜ MMK):</label>
-    <input type="number" id="rate" value="134.59" />
-
-    <label>🇹🇭 THB ➜ MMK</label>
-    <input type="number" id="thbInput" placeholder="Enter THB" oninput="convertTHB()"/>
-    <div class="result" id="mmkResult">MMK: 0</div>
-
-    <label>🇲🇲 MMK ➜ THB</label>
-    <input type="number" id="mmkInput" placeholder="Enter MMK" oninput="convertMMK()"/>
-    <div class="result" id="thbResult">THB: 0</div>
+    <input type="number" id="rate" value="60" />
 
     <hr>
 
-    <h3>🧮 Simple Calculator</h3>
-    <div class="calculator">
-      <input type="text" id="calcInput" placeholder="e.g., 1500+350" />
-      <button onclick="calculate()">= Calculate</button>
-      <div class="result" id="calcResult">Result: 0</div>
+    <label>🇹🇭 ➜ 🇲🇲 THB to MMK</label>
+    <input type="number" id="thbInput" placeholder="Enter THB" oninput="convertTHB()"/>
+    <div class="result" id="mmkResult">MMK: 0</div>
+
+    <label>🇲🇲 ➜ 🇹🇭 MMK to THB</label>
+    <input type="number" id="mmkInput" placeholder="Enter MMK" oninput="convertMMK()"/>
+    <div class="result" id="thbResult">THB: 0</div>
+
+    <div class="note">
+      <label>📝 Your Notes:</label>
+      <textarea rows="4" placeholder="Write anything here..."></textarea>
     </div>
   </div>
 
   <script>
     function toggleTheme() {
       const html = document.documentElement;
-      html.setAttribute('data-theme',
-        html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      const currentTheme = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
     }
 
     function convertTHB() {
@@ -117,16 +127,6 @@
       const mmk = parseFloat(document.getElementById("mmkInput").value);
       const thb = mmk / rate;
       document.getElementById("thbResult").textContent = "THB: " + (thb || 0).toFixed(2);
-    }
-
-    function calculate() {
-      try {
-        const input = document.getElementById("calcInput").value;
-        const result = eval(input);
-        document.getElementById("calcResult").textContent = "Result: " + result;
-      } catch {
-        document.getElementById("calcResult").textContent = "Invalid expression!";
-      }
     }
   </script>
 </body>
