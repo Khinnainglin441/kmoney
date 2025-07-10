@@ -88,6 +88,29 @@
     [data-theme="dark"] .note-box {
       background-color: rgba(255,255,255,0.08);
     }
+
+    /* Running text styles */
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
+      padding: 10px 0;
+      margin: 15px 0;
+      background: rgba(0, 0, 0, 0.05);
+    }
+    .marquee-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 10s linear infinite;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    @keyframes marquee {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
   </style>
 </head>
 <body>
@@ -95,6 +118,12 @@
     <div class="toggle-mode">
       <button class="logo-button" onclick="toggleTheme()">🌓</button>
     </div>
+
+    <!-- Running Text (LED Style) -->
+    <div class="marquee-container">
+      <div class="marquee-text" id="runningText">Welcome to my exchange app 🇹🇭➡️🇲🇲</div>
+    </div>
+    <input type="text" id="marqueeInput" placeholder="✏️ Type running text here..." oninput="updateMarquee()" />
 
     <h2>🇹🇭 THB ➜ 🇲🇲 MMK</h2>
 
@@ -144,6 +173,11 @@
       const mmk = parseFloat(document.getElementById("mmkInput").value);
       const thb = mmk * rate;
       document.getElementById("thbResult").textContent = "THB: " + (thb || 0).toFixed(2);
+    }
+
+    function updateMarquee() {
+      const text = document.getElementById("marqueeInput").value;
+      document.getElementById("runningText").textContent = text || "Welcome to my exchange app 🇹🇭➡️🇲🇲";
     }
   </script>
 </body>
