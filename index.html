@@ -1,3 +1,4 @@
+<!-- Complete HTML -->
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -119,7 +120,7 @@
     .image-gallery {
       display: flex;
       justify-content: space-between;
-      margin-top: 20px;
+      margin-top: 10px;
       gap: 10px;
     }
     .image-gallery img {
@@ -143,6 +144,11 @@
       align-items: center;
       gap: 5px;
     }
+    .footer svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--primary);
+    }
   </style>
 </head>
 <body>
@@ -154,6 +160,12 @@
     <!-- Running Text -->
     <div class="marquee-container">
       <div class="marquee-text">ဒီ App ကို ကိုယ်တိုင်သုံးဖို့ရေးထားတာပါ 🇹🇭 ➜ 🇲🇲 ငွလဲနှုန်းသိချင်တဲ့သူတွေအတွက်</div>
+    </div>
+
+    <!-- Medium Size Images just below marquee -->
+    <div class="image-gallery">
+      <img src="https://via.placeholder.com/200x150.png?text=Image+1" alt="Image 1">
+      <img src="https://via.placeholder.com/200x150.png?text=Image+2" alt="Image 2">
     </div>
 
     <h2>🇹🇭 THB ➜ 🇲🇲 MMK</h2>
@@ -176,12 +188,6 @@
     <input type="number" id="mmkInput" placeholder="Enter MMK" oninput="convertMMK()"/>
     <div class="result" id="thbResult">THB: 0</div>
 
-    <!-- Medium Size Images -->
-    <div class="image-gallery">
-      <img src="https://via.placeholder.com/200x150.png?text=Image+1" alt="Image 1">
-      <img src="https://via.placeholder.com/200x150.png?text=Image+2" alt="Image 2">
-    </div>
-
     <h3>📝 My Note</h3>
     <div class="note-box">
       ဒီ App လေးကို ကိုယ်တိုင်သုံးဖို့လုပ်ထားတာပါ။
@@ -193,8 +199,12 @@
     <!-- Footer -->
     <div class="footer">
       <p>
-        📘 <a href="https://facebook.com/yourpage" target="_blank">Facebook Admin</a> |
-        ☎️ <a href="tel:+959123456789">+95 9 123 456 789</a>
+        <a href="https://facebook.com/yourpage" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.5 9.9v-7H8v-2.9h2.5V9.4c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.4H15c-1.2 0-1.6.8-1.6 1.5v1.8H17l-.4 2.9h-2.2v7C18.3 21.1 22 17 22 12z"/></svg>
+          Facebook Admin
+        </a>
+        |
+        <a href="tel:+959123456789">📞 +95 9 123 456 789</a>
       </p>
     </div>
   </div>
