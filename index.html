@@ -1,4 +1,4 @@
-<!-- Complete HTML -->
+<!-- Complete HTML with Example Text Included -->
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -54,9 +54,14 @@
       padding: 10px;
       font-size: 16px;
       margin-top: 5px;
-      margin-bottom: 15px;
+      margin-bottom: 5px;
       border-radius: 5px;
       border: 1px solid #ccc;
+    }
+    small {
+      display: block;
+      margin-bottom: 15px;
+      color: #666;
     }
     .result {
       font-weight: bold;
@@ -91,7 +96,6 @@
       background-color: rgba(255,255,255,0.08);
     }
 
-    /* Running text styles */
     .marquee-container {
       overflow: hidden;
       white-space: nowrap;
@@ -116,7 +120,6 @@
       100% { transform: translate(-100%, 0); }
     }
 
-    /* Image styles */
     .image-gallery {
       display: flex;
       justify-content: space-between;
@@ -130,7 +133,6 @@
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
 
-    /* Footer styles */
     .footer {
       margin-top: 25px;
       text-align: center;
@@ -157,21 +159,19 @@
       <button class="logo-button" onclick="toggleTheme()">🌓</button>
     </div>
 
-    <!-- Running Text -->
     <div class="marquee-container">
       <div class="marquee-text">ဒီ App ကို ကိုယ်တိုင်သုံးဖို့ရေးထားတာပါ 🇹🇭 ➜ 🇲🇲 ငွလဲနှုန်းသိချင်တဲ့သူတွေအတွက်</div>
     </div>
 
-    <!-- Medium Size Images just below marquee -->
     <div class="image-gallery">
       <img src="https://via.placeholder.com/200x150.png?text=Image+1" alt="Image 1">
       <img src="https://via.placeholder.com/200x150.png?text=Image+2" alt="Image 2">
     </div>
 
     <h2>🇹🇭 THB ➜ 🇲🇲 MMK</h2>
-
     <label>💱 Rate (TH ➜ MM):</label>
     <input type="number" id="rateTHtoMM" value="60" />
+    <small>ဥပမာ ➜ THB 700 = 42,000 MMK</small>
 
     <label>🇹🇭 Enter THB:</label>
     <input type="number" id="thbInput" placeholder="Enter THB" oninput="convertTHB()"/>
@@ -180,9 +180,9 @@
     <hr>
 
     <h2>🇲🇲 MMK ➜ 🇹🇭 THB</h2>
-
     <label>💱 Rate (MM ➜ TH):</label>
     <input type="number" id="rateMMtoTH" value="0.0167" />
+    <small>ဥပမာ ➜ MMK 100000 = 1,670 THB</small>
 
     <label>🇲🇲 Enter MMK:</label>
     <input type="number" id="mmkInput" placeholder="Enter MMK" oninput="convertMMK()"/>
@@ -196,7 +196,6 @@
       Website မှာသူများပြင်လို့မရဘဲ ကိုယ့်တင်ထားတာကိုပဲဖတ်လို့ရပါတယ်။
     </div>
 
-    <!-- Footer -->
     <div class="footer">
       <p>
         <a href="https://facebook.com/yourpage" target="_blank">
