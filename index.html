@@ -12,6 +12,7 @@
       --text-dark: #fff;
       --card-light: #fff;
       --card-dark: #333;
+      --primary: #007BFF;
     }
     [data-theme="light"] {
       background-color: var(--bg-light);
@@ -28,7 +29,7 @@
       transition: background 0.3s, color 0.3s;
     }
     .container {
-      max-width: 400px;
+      max-width: 420px;
       margin: auto;
       background-color: var(--card-light);
       padding: 20px;
@@ -46,7 +47,7 @@
       margin-top: 10px;
       display: block;
     }
-    input, button, textarea {
+    input, textarea {
       width: 100%;
       padding: 10px;
       font-size: 16px;
@@ -64,19 +65,23 @@
       text-align: center;
       margin-bottom: 15px;
     }
-    .toggle-button {
-      border: none;
-      background-color: #ddd;
+    .logo-button {
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      padding: 10px 15px;
+      background-color: var(--primary);
+      color: white;
+      font-size: 24px;
+      border: none;
       cursor: pointer;
-      font-size: 18px;
-      transition: background 0.3s;
     }
-    .toggle-button:hover {
-      background-color: #bbb;
-    }
-    .note {
+    .textarea {
+      resize: vertical;
+      min-height: 100px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
       margin-top: 20px;
     }
   </style>
@@ -84,28 +89,30 @@
 <body>
   <div class="container">
     <div class="toggle-mode">
-      <button class="toggle-button" onclick="toggleTheme()">🌓</button>
+      <button class="logo-button" onclick="toggleTheme()">🌓</button>
     </div>
 
-    <h2>🇹🇭 Thai – Myanmar 🇲🇲</h2>
+    <h2>🇹🇭 THB ➜ 🇲🇲 MMK</h2>
 
-    <label>💱 Exchange Rate (1 THB ➜ MMK):</label>
-    <input type="number" id="rate" value="60" />
+    <label>💱 Rate (TH ➜ MM):</label>
+    <input type="number" id="rateTHtoMM" value="60" />
 
-    <hr>
-
-    <label>🇹🇭 ➜ 🇲🇲 THB to MMK</label>
+    <label>🇹🇭 Enter THB:</label>
     <input type="number" id="thbInput" placeholder="Enter THB" oninput="convertTHB()"/>
     <div class="result" id="mmkResult">MMK: 0</div>
 
-    <label>🇲🇲 ➜ 🇹🇭 MMK to THB</label>
+    <hr>
+
+    <h2>🇲🇲 MMK ➜ 🇹🇭 THB</h2>
+
+    <label>💱 Rate (MM ➜ TH):</label>
+    <input type="number" id="rateMMtoTH" value="0.0167" />
+
+    <label>🇲🇲 Enter MMK:</label>
     <input type="number" id="mmkInput" placeholder="Enter MMK" oninput="convertMMK()"/>
     <div class="result" id="thbResult">THB: 0</div>
 
-    <div class="note">
-      <label>📝 Your Notes:</label>
-      <textarea rows="4" placeholder="Write anything here..."></textarea>
-    </div>
+    <textarea class="textarea" placeholder="✍️ Write anything you want..."></textarea>
   </div>
 
   <script>
@@ -116,16 +123,16 @@
     }
 
     function convertTHB() {
-      const rate = parseFloat(document.getElementById("rate").value);
+      const rate = parseFloat(document.getElementById("rateTHtoMM").value);
       const thb = parseFloat(document.getElementById("thbInput").value);
       const mmk = thb * rate;
       document.getElementById("mmkResult").textContent = "MMK: " + (mmk || 0).toLocaleString();
     }
 
     function convertMMK() {
-      const rate = parseFloat(document.getElementById("rate").value);
+      const rate = parseFloat(document.getElementById("rateMMtoTH").value);
       const mmk = parseFloat(document.getElementById("mmkInput").value);
-      const thb = mmk / rate;
+      const thb = mmk * rate;
       document.getElementById("thbResult").textContent = "THB: " + (thb || 0).toFixed(2);
     }
   </script>
