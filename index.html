@@ -119,11 +119,10 @@
       <button class="logo-button" onclick="toggleTheme()">🌓</button>
     </div>
 
-    <!-- Running Text (LED Style) -->
+    <!-- Running Text (LED Style, Fixed Only) -->
     <div class="marquee-container">
-      <div class="marquee-text" id="runningText">Welcome to my exchange app 🇹🇭➡️🇲🇲</div>
+      <div class="marquee-text">ဒီ App ကို ကိုယ်တိုင်သုံးဖို့ရေးထားတာပါ 🇹🇭 ➜ 🇲🇲 ငွလဲနှုန်းသိချင်တဲ့သူတွေအတွက်</div>
     </div>
-    <input type="text" id="marqueeInput" placeholder="✏️ Type running text here..." oninput="updateMarquee()" />
 
     <h2>🇹🇭 THB ➜ 🇲🇲 MMK</h2>
 
@@ -173,11 +172,6 @@
       const mmk = parseFloat(document.getElementById("mmkInput").value);
       const thb = mmk * rate;
       document.getElementById("thbResult").textContent = "THB: " + (thb || 0).toFixed(2);
-    }
-
-    function updateMarquee() {
-      const text = document.getElementById("marqueeInput").value;
-      document.getElementById("runningText").textContent = text || "Welcome to my exchange app 🇹🇭➡️🇲🇲";
     }
   </script>
 </body>
