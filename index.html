@@ -392,19 +392,12 @@
 <body>
     <!-- Running Text Marquee -->
     <div class="marquee">
-        <span>📢 Welcome to K Money Exchange Service | Best Rates in Town | Open 24/7 | THB/MMK Exchange 📢</span>
+        <span>📢 K ငွေလဲလှယ်ဝန်ဆောင်မှုမှ ကြိုဆိုပါသည် | အကောင်းဆုံးဈေးနှုန်းများ | ၂၄နာရီ အချိန်မရွေး | THB/MMK ငွေလဲလှယ်ရန် 📢</span>
     </div>
     
     <!-- Header -->
     <div class="header">
         <h1>K Money Exchange Service</h1>
-        
-        <!-- Language Selector -->
-        <div class="language-selector">
-            <button class="language-btn active" onclick="changeLanguage('en')">English</button>
-            <button class="language-btn" onclick="changeLanguage('my')">မြန်မာ</button>
-            <button class="language-btn" onclick="changeLanguage('th')">ไทย</button>
-        </div>
         
         <!-- Currency Images -->
         <div class="currency-images">
@@ -437,15 +430,15 @@
             </div>
             
             <div class="rate-info" id="thb-rate-info">
-                Current Rate Now: <span id="thb-rate-display">0</span> THB = <span id="mmk-rate-display">0</span> MMK
+                လက်ရှိဈေးနှုန်း: <span id="thb-rate-display">0</span> THB = <span id="mmk-rate-display">0</span> MMK
             </div>
             
             <div class="timestamp" id="thb-timestamp">
-                <span id="last-updated"></span>
+                <span id="last-updated">နောက်ဆုံးအချိန်</span>
             </div>
             
             <div class="currency-input">
-                <div class="input-label" id="thb-label">Thai Baht (THB)</div>
+                <div class="input-label" id="thb-label">ထိုင်းဘတ် (THB)</div>
                 <div class="input-group">
                     <span class="flag">
                         <i class="flag-icon flag-icon-th"></i>
@@ -457,14 +450,14 @@
             
             <div class="result-display">
                 <div class="amount" id="thb-display">0</div>
-                <div class="currency" id="thb-currency-label">Thai Baht</div>
+                <div class="currency" id="thb-currency-label">ထိုင်းဘတ်</div>
                 <div class="equal-sign">=</div>
                 <div class="amount" id="mmk-display">0</div>
-                <div class="currency" id="mmk-currency-label">Myanmar Kyat</div>
+                <div class="currency" id="mmk-currency-label">မြန်မာကျပ်</div>
             </div>
             
             <div class="currency-input">
-                <div class="input-label" id="mmk-result-label">Myanmar Kyat (MMK)</div>
+                <div class="input-label" id="mmk-result-label">မြန်မာကျပ် (MMK)</div>
                 <div class="input-group">
                     <span class="flag">
                         <i class="flag-icon flag-icon-mm"></i>
@@ -484,15 +477,15 @@
             </div>
             
             <div class="rate-info" id="mmk-rate-info">
-                Current Rate Now: <span id="mmk-rate-display2">0</span> MMK = <span id="thb-rate-display2">0</span> THB
+                လက်ရှိဈေးနှုန်း: <span id="mmk-rate-display2">0</span> MMK = <span id="thb-rate-display2">0</span> THB
             </div>
             
             <div class="timestamp" id="mmk-timestamp">
-                <span id="last-updated2"></span>
+                <span id="last-updated2">နောက်ဆုံးအချိန်</span>
             </div>
             
             <div class="currency-input">
-                <div class="input-label" id="mmk-input-label">Myanmar Kyat (MMK)</div>
+                <div class="input-label" id="mmk-input-label">မြန်မာကျပ် (MMK)</div>
                 <div class="input-group">
                     <span class="flag">
                         <i class="flag-icon flag-icon-mm"></i>
@@ -504,14 +497,14 @@
             
             <div class="result-display">
                 <div class="amount" id="mmk-display-input">0</div>
-                <div class="currency" id="mmk-input-currency-label">Myanmar Kyat</div>
+                <div class="currency" id="mmk-input-currency-label">မြန်မာကျပ်</div>
                 <div class="equal-sign">=</div>
                 <div class="amount" id="thb-display-result">0</div>
-                <div class="currency" id="thb-result-currency-label">Thai Baht</div>
+                <div class="currency" id="thb-result-currency-label">ထိုင်းဘတ်</div>
             </div>
             
             <div class="currency-input">
-                <div class="input-label" id="thb-result-label">Thai Baht (THB)</div>
+                <div class="input-label" id="thb-result-label">ထိုင်းဘတ် (THB)</div>
                 <div class="input-group">
                     <span class="flag">
                         <i class="flag-icon flag-icon-th"></i>
@@ -527,14 +520,14 @@
     <div class="footer">
         <div class="contact-info">
             <a href="https://www.facebook.com/share/1EPUeGofGc/" target="_blank">
-                <i class="fab fa-facebook"></i> <span id="facebook-text">Facebook</span>
+                <i class="fab fa-facebook"></i> <span id="facebook-text">ဖေ့စ်ဘုတ်</span>
             </a>
             <a href="tel:0942956530">
-                <i class="fas fa-phone"></i> <span id="phone-text">09-123 456 789</span>
+                <i class="fas fa-phone"></i> <span id="phone-text">၀၉-၁၂၃ ၄၅၆ ၇၈၉</span>
             </a>
         </div>
         <div class="copyright" id="copyright-text">
-            © 2025 K Money Exchange Service. All rights reserved.
+            © ၂၀၂၅ K ငွေလဲလှယ်ဝန်ဆောင်မှု။ အခွင့်အရေးအားလုံးရယူထားသည်။
         </div>
     </div>
 
@@ -550,64 +543,6 @@
                 thb: 740
             }
         };
-        
-        // Complete translations
-        const translations = {
-            en: {
-                thbTitle: "THB ⇄ MMK",
-                mmkTitle: "MMK ⇄ THB",
-                thbLabel: "Thai Baht (THB)",
-                mmkLabel: "Myanmar Kyat (MMK)",
-                thbResultLabel: "Myanmar Kyat (MMK)",
-                mmkResultLabel: "Thai Baht (THB)",
-                thbCurrency: "Thai Baht",
-                mmkCurrency: "Myanmar Kyat",
-                lastUpdated: "Last updated",
-                rateText: "Current Rate Now",
-                facebook: "Facebook",
-                phone: "0942956530",
-                copyright: "© 2025 K Money Exchange Service. All rights reserved.",
-                marquee: "📢 Welcome to K Money Exchange Service | Best Rates in Town | THB/MMK Exchange 📢",
-                
-                
-            },
-            my: {
-                thbTitle: "THB ⇄ MMK",
-                mmkTitle: "MMK ⇄ THB",
-                thbLabel: "ထိုင်းဘတ် (THB)",
-                mmkLabel: "မြန်မာကျပ် (MMK)",
-                thbResultLabel: "မြန်မာကျပ် (MMK)",
-                mmkResultLabel: "ထိုင်းဘတ် (THB)",
-                thbCurrency: "ထိုင်းဘတ်",
-                mmkCurrency: "မြန်မာကျပ်",
-                lastUpdated: "နောက်ဆုံးအချိန်",
-                rateText: "လက်ရှိဈေးနှုန်း",
-                facebook: "ဖေ့စ်ဘုတ်",
-                phone: "၀၉-၁၂၃ ၄၅၆ ၇၈၉",
-                copyright: "© ၂၀၂၅ K ငွေလဲလှယ်ဝန်ဆောင်မှု။ အခွင့်အရေးအားလုံးရယူထားသည်။",
-                marquee: "📢 K ငွေလဲလှယ်ဝန်ဆောင်မှုမှ ကြိုဆိုပါသည် | အကောင်းဆုံးဈေးနှုန်းများ | ၂၄နာရီ အချိန်မရွေး | THB/MMK ငွေလဲလှယ်ရန် 📢",
-                
-            },
-            th: {
-                thbTitle: "THB ⇄ MMK",
-                mmkTitle: "MMK ⇄ THB",
-                thbLabel: "บาทไทย (THB)",
-                mmkLabel: "จ๊าตพม่า (MMK)",
-                thbResultLabel: "จ๊าตพม่า (MMK)",
-                mmkResultLabel: "บาทไทย (THB)",
-                thbCurrency: "บาทไทย",
-                mmkCurrency: "จ๊าตพม่า",
-                lastUpdated: "อัพเดทล่าสุด",
-                rateText: "อัตราปัจจุบัน",
-                facebook: "เฟสบุ๊ค",
-                phone: "09-123 456 789",
-                copyright: "© 2025 K บริการแลกเปลี่ยนเงิน สงวนลิขสิทธิ์",
-                marquee: "📢 ยินดีต้อนรับสู่ K Money Exchange Service | อัตราแลกเปลี่ยนดีที่สุดในเมือง | เปิดบริการ 24 ชั่วโมง | แลกเปลี่ยน THB/MMK 📢",
-                
-            }
-        };
-        
-        let currentLanguage = 'en';
         
         // Initialize
         window.onload = function() {
@@ -675,67 +610,6 @@
             document.getElementById('thb-display-result').textContent = thbAmount.toFixed(2);
             
             updateTimestamp();
-        }
-        
-        function changeLanguage(lang) {
-            currentLanguage = lang;
-            
-            // Update active language button
-            document.querySelectorAll('.language-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent === (lang === 'en' ? 'English' : 
-                                       lang === 'my' ? 'မြန်မာ' : 
-                                       lang === 'th' ? 'ไทย' : '')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Update all text elements
-            const t = translations[lang];
-            
-            // Marquee text
-            document.querySelector('.marquee span').textContent = t.marquee;
-            
-            // Public messages
-            document.getElementById('public-message-title').textContent = t.publicMessageTitle;
-            document.getElementById('message1').textContent = t.message1;
-            document.getElementById('message2').textContent = t.message2;
-            document.getElementById('message3').textContent = t.message3;
-            document.getElementById('message4').textContent = t.message4;
-            document.getElementById('message5').textContent = t.message5;
-            
-            // Converter titles
-            document.getElementById('thb-title').textContent = t.thbTitle;
-            document.getElementById('mmk-title').textContent = t.mmkTitle;
-            
-            // Labels
-            document.getElementById('thb-label').textContent = t.thbLabel;
-            document.getElementById('mmk-label').textContent = t.mmkLabel;
-            document.getElementById('thb-result-label').textContent = t.mmkResultLabel;
-            document.getElementById('mmk-result-label').textContent = t.thbResultLabel;
-            document.getElementById('mmk-input-label').textContent = t.mmkLabel;
-            
-            // Currency names
-            document.getElementById('thb-currency-label').textContent = t.thbCurrency;
-            document.getElementById('mmk-currency-label').textContent = t.mmkCurrency;
-            document.getElementById('mmk-input-currency-label').textContent = t.mmkCurrency;
-            document.getElementById('thb-result-currency-label').textContent = t.thbCurrency;
-            
-            // Last updated text
-            document.getElementById('last-updated').textContent = t.lastUpdated;
-            document.getElementById('last-updated2').textContent = t.lastUpdated;
-            
-            // Rate info
-            document.getElementById('thb-rate-info').innerHTML = 
-                `${t.rateText}: <span id="thb-rate-display">${rates.thbToMmk.thb}</span> THB = <span id="mmk-rate-display">${rates.thbToMmk.mmk.toLocaleString()}</span> MMK`;
-            
-            document.getElementById('mmk-rate-info').innerHTML = 
-                `${t.rateText}: <span id="mmk-rate-display2">${rates.mmkToThb.mmk.toLocaleString()}</span> MMK = <span id="thb-rate-display2">${rates.mmkToThb.thb}</span> THB`;
-            
-            // Footer text
-            document.getElementById('facebook-text').textContent = t.facebook;
-            document.getElementById('phone-text').textContent = t.phone;
-            document.getElementById('copyright-text').textContent = t.copyright;
         }
     </script>
 </body>
