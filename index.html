@@ -1,234 +1,755 @@
-<!-- Complete HTML with Example Text Included -->
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>THB-MMK Exchange</title>
-  <style>
-    :root {
-      --bg-light: #f4f6f8;
-      --bg-dark: #1a1a1a;
-      --text-light: #000;
-      --text-dark: #fff;
-      --card-light: #fff;
-      --card-dark: #333;
-      --primary: #007BFF;
-      --green-led: #00ff00;
-    }
-    [data-theme="light"] {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-    }
-    [data-theme="dark"] {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 20px;
-      transition: background 0.3s, color 0.3s;
-    }
-    .container {
-      max-width: 420px;
-      margin: auto;
-      background-color: var(--card-light);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      transition: background 0.3s;
-    }
-    [data-theme="dark"] .container {
-      background-color: var(--card-dark);
-    }
-    h2 {
-      text-align: center;
-    }
-    label {
-      margin-top: 10px;
-      display: block;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      margin-top: 5px;
-      margin-bottom: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    small {
-      display: block;
-      margin-bottom: 15px;
-      color: #666;
-    }
-    .result {
-      font-weight: bold;
-      font-size: 18px;
-      text-align: center;
-    }
-    .toggle-mode {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-    .logo-button {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: var(--primary);
-      color: white;
-      font-size: 24px;
-      border: none;
-      cursor: pointer;
-    }
-    .note-box {
-      background-color: rgba(0,0,0,0.05);
-      padding: 12px;
-      border-left: 4px solid var(--primary);
-      border-radius: 8px;
-      font-style: italic;
-      font-size: 15px;
-      margin-top: 25px;
-      white-space: pre-line;
-    }
-    [data-theme="dark"] .note-box {
-      background-color: rgba(255,255,255,0.08);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K Money Exchange Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3a0ca3;
+            --secondary-color: #f72585;
+            --accent-color: #4cc9f0;
+            --text-color: #2b2d42;
+            --light-text: #8d99ae;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --thb-color: #ef233c;
+            --mmk-color: #ffd166;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        /* Running Text Marquee */
+        .marquee {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 25px 15px 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .marquee-container {
-      overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      border: 2px dashed var(--primary);
-      border-radius: 8px;
-      padding: 10px 0;
-      margin: 15px 0;
-      background: #000;
-    }
-    .marquee-text {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 10s linear infinite;
-      font-weight: bold;
-      font-size: 16px;
-      color: var(--green-led);
-      font-family: 'Courier New', monospace;
-    }
-    @keyframes marquee {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-100%, 0); }
-    }
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #f72585, #b5179e, #7209b7, #560bad, 
+                #480ca8, #3a0ca3, #3f37c9, #4361ee, 
+                #4895ef, #4cc9f0);
+            animation: rainbow 8s linear infinite;
+            background-size: 800% 800%;
+        }
 
-    .image-gallery {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-      gap: 10px;
-    }
-    .image-gallery img {
-      width: 48%;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(90deg, 
+                #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF);
+            background-size: 500% 500%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorChange 5s ease infinite;
+            letter-spacing: 0.5px;
+        }
+        
+        @keyframes colorChange {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Language selector */
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0 15px;
+        }
+        
+        .language-btn {
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        
+        .language-btn.active {
+            background: white;
+            color: var(--primary-color);
+            font-weight: 600;
+            border-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Currency Images */
+        .currency-images {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 15px;
+        }
 
-    .footer {
-      margin-top: 25px;
-      text-align: center;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-    .footer a {
-      color: var(--primary);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .footer svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--primary);
-    }
-  </style>
+        .currency-image {
+            width: 45%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .currency-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Public Messages */
+        .public-messages {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 0 15px 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        
+        .public-messages h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 18px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+        }
+        
+        .message-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .message-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .message-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .message-list i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        /* Converter cards */
+        .converter-container {
+            padding: 0 15px;
+        }
+        
+        .converter-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .converter-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--thb-color), var(--mmk-color));
+            animation: rainbow 6s linear infinite;
+            background-size: 400% 400%;
+        }
+
+        #mmk-card::after {
+            background: linear-gradient(90deg, var(--mmk-color), var(--thb-color));
+        }
+        
+        .converter-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+        
+        .converter-title i {
+            font-size: 24px;
+        }
+
+        .exchange-icon {
+            font-size: 20px;
+            color: var(--secondary-color);
+            margin: 0 5px;
+        }
+        
+        .currency-input {
+            margin-bottom: 20px;
+        }
+        
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .flag {
+            padding: 0 15px;
+            font-size: 28px;
+            background: rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 80px;
+        }
+        
+        .currency-code {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+        
+        input {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            font-size: 17px;
+            outline: none;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .result-display {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(76, 201, 240, 0.1), rgba(247, 37, 133, 0.1));
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .amount {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 8px 0;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+        }
+        
+        .currency {
+            font-size: 16px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+        
+        .equal-sign {
+            font-size: 28px;
+            margin: 12px 0;
+            color: var(--light-text);
+            font-weight: bold;
+        }
+        
+        .rate-info {
+            margin: 15px 0 5px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(33, 150, 83, 0.1));
+            border-radius: 12px;
+            font-size: 15px;
+            text-align: center;
+            color: var(--text-color);
+            border-left: 5px solid #2ecc71;
+            font-weight: 500;
+        }
+        
+        .timestamp {
+            font-size: 13px;
+            color: var(--light-text);
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 15px;
+            color: var(--light-text);
+            border-top: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            margin-top: 10px;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        
+        .contact-info i {
+            font-size: 18px;
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="toggle-mode">
-      <button class="logo-button" onclick="toggleTheme()">🌓</button>
+    <!-- Running Text Marquee -->
+    <div class="marquee">
+        <span>📢 Welcome to K Money Exchange Service | Best Rates in Town | Open 24/7 | THB/MMK Exchange 📢</span>
     </div>
-
-    <div class="marquee-container">
-      <div class="marquee-text">ထိုင်း🇹🇭 - မြန်မာ🇲🇲 ငွေစျေးနှုန်ကို K money Website မှာ အလွယ်တကူ ကြည့်လို့နိုင်ပါပြီး✌</div>
+    
+    <!-- Header -->
+    <div class="header">
+        <h1>K Money Exchange Service</h1>
+        
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button class="language-btn active" onclick="changeLanguage('en')">English</button>
+            <button class="language-btn" onclick="changeLanguage('my')">မြန်မာ</button>
+            <button class="language-btn" onclick="changeLanguage('th')">ไทย</button>
+        </div>
+        
+        <!-- Currency Images -->
+        <div class="currency-images">
+            <img src="https://i.imgur.com/JQ9w7bD.jpg" alt="Thai Baht" class="currency-image">
+            <img src="https://i.imgur.com/vVW5bQj.jpg" alt="Myanmar Kyat" class="currency-image">
+        </div>
     </div>
-
-    <div class="image-gallery">
-      <img src="https://raw.githubusercontent.com/Khinnainglin441/kmoney/main/image/k1.png" alt="Image 1">
-      <img src="https://raw.githubusercontent.com/Khinnainglin441/kmoney/main/image/k2.png" alt="Image 2">
+    
+    <!-- Public Messages -->
+    <div class="public-messages">
+        <h3 id="public-message-title">Public Announcements</h3>
+        <ul class="message-list">
+            <li><i class="fas fa-bullhorn"></i> <span id="message1">Special rate for exchange above 100,000 THB</span></li>
+            <li><i class="fas fa-bullhorn"></i> <span id="message2">New branch opening in Yangon next month</span></li>
+            <li><i class="fas fa-bullhorn"></i> <span id="message3">We accept all major currencies with competitive rates</span></li>
+            <li><i class="fas fa-bullhorn"></i> <span id="message4">24/7 customer support available via phone</span></li>
+            <li><i class="fas fa-bullhorn"></i> <span id="message5">Follow us on Facebook for daily rate updates</span></li>
+        </ul>
     </div>
-
-    <h2>🇹🇭 THB ➜ 🇲🇲 MMK</h2>
-    <label>💱 Rate (TH ➜ MM):</label>
-    <input type="number" id="rateTHtoMM" value="134.77" />
-    <small>ဒီနေ့ငွေစျေး ➜ THB 740 = 100000 MMK</small>
-
-    <label>🇹🇭 Enter THB:</label>
-    <input type="number" id="thbInput" placeholder="Enter THB" oninput="convertTHB()"/>
-    <div class="result" id="mmkResult">MMK: 0</div>
-
-    <hr>
-
-    <h2>🇲🇲 MMK ➜ 🇹🇭 THB</h2>
-    <label>💱 Rate (MM ➜ TH):</label>
-    <input type="number" id="rateMMtoTH" value="0" />
-    <small>ဥပမာ ➜ MMK 102000 = 742 THB</small>
-
-    <label>🇲🇲 Enter MMK:</label>
-    <input type="number" id="mmkInput" placeholder="Enter MMK" oninput="convertMMK()"/>
-    <div class="result" id="thbResult">THB: 0</div>
-
-    <h3>💰 K Money ငွေလွှဲ ဝန်ဆောင်မှုစျေးနှုန်း💰👇👇</h3>
-    <div class="note-box">
-      ယနေ့ပေါက်စျေး 1သိန်း 740ဘတ်
-      1သိန်း ဆို ဝန်ဆောင်ခမရှိ ပေါက်စျေးအတိုင်းရပါတယ်
-      1သိန်း အောက်ဆို ဝန်ဆောင်ခ 4ဘတ် ရှိပါတယ်
-      10သိန်း အထက်ဆို ပေါက်စျေးထက် လျော့ပေးပါတယ်🥰
-      Khin Naing Lin မှာ ယုံကြည်စိတ်စွာ လာရောက်လွှဲလို့ရပါတယ်ခင်ဗျ
+    
+    <!-- Main Content -->
+    <div class="converter-container">
+        <!-- THB to MMK Converter -->
+        <div class="converter-card" id="thb-card">
+            <div class="converter-title">
+                <i class="flag-icon flag-icon-th"></i>
+                <span id="thb-title">THB ⇄ MMK</span>
+                <i class="flag-icon flag-icon-mm"></i>
+            </div>
+            
+            <div class="rate-info" id="thb-rate-info">
+                Current Rate Now: <span id="thb-rate-display">0</span> THB = <span id="mmk-rate-display">0</span> MMK
+            </div>
+            
+            <div class="timestamp" id="thb-timestamp">
+                <span id="last-updated"></span>
+            </div>
+            
+            <div class="currency-input">
+                <div class="input-label" id="thb-label">Thai Baht (THB)</div>
+                <div class="input-group">
+                    <span class="flag">
+                        <i class="flag-icon flag-icon-th"></i>
+                        <span class="currency-code">THB</span>
+                    </span>
+                    <input type="number" id="thb-amount" placeholder="Enter amount" oninput="convertThbToMmk()">
+                </div>
+            </div>
+            
+            <div class="result-display">
+                <div class="amount" id="thb-display">0</div>
+                <div class="currency" id="thb-currency-label">Thai Baht</div>
+                <div class="equal-sign">=</div>
+                <div class="amount" id="mmk-display">0</div>
+                <div class="currency" id="mmk-currency-label">Myanmar Kyat</div>
+            </div>
+            
+            <div class="currency-input">
+                <div class="input-label" id="mmk-result-label">Myanmar Kyat (MMK)</div>
+                <div class="input-group">
+                    <span class="flag">
+                        <i class="flag-icon flag-icon-mm"></i>
+                        <span class="currency-code">MMK</span>
+                    </span>
+                    <input type="number" id="mmk-result" placeholder="Result" readonly>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MMK to THB Converter -->
+        <div class="converter-card" id="mmk-card">
+            <div class="converter-title">
+                <i class="flag-icon flag-icon-mm"></i>
+                <span id="mmk-title">MMK ⇄ THB</span>
+                <i class="flag-icon flag-icon-th"></i>
+            </div>
+            
+            <div class="rate-info" id="mmk-rate-info">
+                Current Rate Now: <span id="mmk-rate-display2">0</span> MMK = <span id="thb-rate-display2">0</span> THB
+            </div>
+            
+            <div class="timestamp" id="mmk-timestamp">
+                <span id="last-updated2"></span>
+            </div>
+            
+            <div class="currency-input">
+                <div class="input-label" id="mmk-input-label">Myanmar Kyat (MMK)</div>
+                <div class="input-group">
+                    <span class="flag">
+                        <i class="flag-icon flag-icon-mm"></i>
+                        <span class="currency-code">MMK</span>
+                    </span>
+                    <input type="number" id="mmk-amount" placeholder="Enter amount" oninput="convertMmkToThb()">
+                </div>
+            </div>
+            
+            <div class="result-display">
+                <div class="amount" id="mmk-display-input">0</div>
+                <div class="currency" id="mmk-input-currency-label">Myanmar Kyat</div>
+                <div class="equal-sign">=</div>
+                <div class="amount" id="thb-display-result">0</div>
+                <div class="currency" id="thb-result-currency-label">Thai Baht</div>
+            </div>
+            
+            <div class="currency-input">
+                <div class="input-label" id="thb-result-label">Thai Baht (THB)</div>
+                <div class="input-group">
+                    <span class="flag">
+                        <i class="flag-icon flag-icon-th"></i>
+                        <span class="currency-code">THB</span>
+                    </span>
+                    <input type="number" id="thb-result" placeholder="Result" readonly>
+                </div>
+            </div>
+        </div>
     </div>
-
+    
+    <!-- Footer -->
     <div class="footer">
-      <p>
-        <a href="https://www.facebook.com/share/1Aq8qj9bwb/" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.5 9.9v-7H8v-2.9h2.5V9.4c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.4H15c-1.2 0-1.6.8-1.6 1.5v1.8H17l-.4 2.9h-2.2v7C18.3 21.1 22 17 22 12z"/></svg>
-          Facebook Admin
-        </a>
-        |
-        <a href="tel:0942956530">📞 0942956530</a>
-      </p>
+        <div class="contact-info">
+            <a href="https://facebook.com/kmoneyexchange" target="_blank">
+                <i class="fab fa-facebook"></i> <span id="facebook-text">Facebook</span>
+            </a>
+            <a href="tel:+959123456789">
+                <i class="fas fa-phone"></i> <span id="phone-text">09-123 456 789</span>
+            </a>
+        </div>
+        <div class="copyright" id="copyright-text">
+            © 2025 K Money Exchange Service. All rights reserved.
+        </div>
     </div>
-  </div>
 
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
-    }
-
-    function convertTHB() {
-      const rate = parseFloat(document.getElementById("rateTHtoMM").value);
-      const thb = parseFloat(document.getElementById("thbInput").value);
-      const mmk = thb * rate;
-      document.getElementById("mmkResult").textContent = "MMK: " + (mmk || 0).toLocaleString();
-    }
-
-    function convertMMK() {
-      const rate = parseFloat(document.getElementById("rateMMtoTH").value);
-      const mmk = parseFloat(document.getElementById("mmkInput").value);
-      const thb = mmk * rate;
-      document.getElementById("thbResult").textContent = "THB: " + (thb || 0).toFixed(2);
-    }
-  </script>
+    <script>
+        // Exchange rates - Only change these values to update the entire app
+        const rates = {
+            thbToMmk: {
+                thb: 740,
+                mmk: 100000
+            },
+            mmkToThb: {
+                mmk: 102000,
+                thb: 740
+            }
+        };
+        
+        // Complete translations
+        const translations = {
+            en: {
+                thbTitle: "THB ⇄ MMK",
+                mmkTitle: "MMK ⇄ THB",
+                thbLabel: "Thai Baht (THB)",
+                mmkLabel: "Myanmar Kyat (MMK)",
+                thbResultLabel: "Myanmar Kyat (MMK)",
+                mmkResultLabel: "Thai Baht (THB)",
+                thbCurrency: "Thai Baht",
+                mmkCurrency: "Myanmar Kyat",
+                lastUpdated: "Last updated",
+                rateText: "Current Rate Now",
+                facebook: "Facebook",
+                phone: "09-123 456 789",
+                copyright: "© 2025 K Money Exchange Service. All rights reserved.",
+                marquee: "📢 Welcome to K Money Exchange Service | Best Rates in Town | Open 24/7 | THB/MMK Exchange 📢",
+                publicMessageTitle: "Public Announcements",
+                message1: "Special rate for exchange above 100,000 THB",
+                message2: "New branch opening in Yangon next month",
+                message3: "We accept all major currencies with competitive rates",
+                message4: "24/7 customer support available via phone",
+                message5: "Follow us on Facebook for daily rate updates"
+            },
+            my: {
+                thbTitle: "THB ⇄ MMK",
+                mmkTitle: "MMK ⇄ THB",
+                thbLabel: "ထိုင်းဘတ် (THB)",
+                mmkLabel: "မြန်မာကျပ် (MMK)",
+                thbResultLabel: "မြန်မာကျပ် (MMK)",
+                mmkResultLabel: "ထိုင်းဘတ် (THB)",
+                thbCurrency: "ထိုင်းဘတ်",
+                mmkCurrency: "မြန်မာကျပ်",
+                lastUpdated: "နောက်ဆုံးအချိန်",
+                rateText: "လက်ရှိဈေးနှုန်း",
+                facebook: "ဖေ့စ်ဘုတ်",
+                phone: "၀၉-၁၂၃ ၄၅၆ ၇၈၉",
+                copyright: "© ၂၀၂၅ K ငွေလဲလှယ်ဝန်ဆောင်မှု။ အခွင့်အရေးအားလုံးရယူထားသည်။",
+                marquee: "📢 K ငွေလဲလှယ်ဝန်ဆောင်မှုမှ ကြိုဆိုပါသည် | အကောင်းဆုံးဈေးနှုန်းများ | ၂၄နာရီ အချိန်မရွေး | THB/MMK ငွေလဲလှယ်ရန် 📢",
+                publicMessageTitle: "အများပြည်သူသို့ကြေညာချက်",
+                message1: "THB ၁၀၀,၀၀၀ အထက်လဲလှယ်ပါက အထူးနှုန်း",
+                message2: "လာမည့်လတွင် ရန်ကုန်မြို့၌ လုပ်ငန်းခွဲသစ် ဖွင့်လှစ်မည်",
+                message3: "ငွေကြေးအမျိုးမျိုးကို ယှဉ်ပြိုင်နှုန်းထားဖြင့် လက်ခံပါသည်",
+                message4: "ဖုန်းဖြင့် ၂၄နာရီ အချိန်မရွေး ဝန်ဆောင်မှုရယူနိုင်ပါသည်",
+                message5: "နေ့စဉ်နှုန်းထားများအတွက် ကျွန်ုပ်တို့၏ Facebook ကို လိုက်နာပါ"
+            },
+            th: {
+                thbTitle: "THB ⇄ MMK",
+                mmkTitle: "MMK ⇄ THB",
+                thbLabel: "บาทไทย (THB)",
+                mmkLabel: "จ๊าตพม่า (MMK)",
+                thbResultLabel: "จ๊าตพม่า (MMK)",
+                mmkResultLabel: "บาทไทย (THB)",
+                thbCurrency: "บาทไทย",
+                mmkCurrency: "จ๊าตพม่า",
+                lastUpdated: "อัพเดทล่าสุด",
+                rateText: "อัตราปัจจุบัน",
+                facebook: "เฟสบุ๊ค",
+                phone: "09-123 456 789",
+                copyright: "© 2025 K บริการแลกเปลี่ยนเงิน สงวนลิขสิทธิ์",
+                marquee: "📢 ยินดีต้อนรับสู่ K Money Exchange Service | อัตราแลกเปลี่ยนดีที่สุดในเมือง | เปิดบริการ 24 ชั่วโมง | แลกเปลี่ยน THB/MMK 📢",
+                publicMessageTitle: "ประกาศสาธารณะ",
+                message1: "อัตราพิเศษสำหรับการแลกเปลี่ยนมากกว่า 100,000 บาท",
+                message2: "จะเปิดสาขาใหม่ในย่างกุ้งเดือนหน้า",
+                message3: "เรารับสกุลเงินหลักทั้งหมดในอัตราที่แข่งขันได้",
+                message4: "บริการลูกค้าตลอด 24 ชั่วโมงทางโทรศัพท์",
+                message5: "ติดตามเราใน Facebook เพื่อรับอัตราปรับปรุงประจำวัน"
+            }
+        };
+        
+        let currentLanguage = 'en';
+        
+        // Initialize
+        window.onload = function() {
+            // Set default values based on rates
+            document.getElementById('thb-amount').value = rates.thbToMmk.thb;
+            document.getElementById('mmk-amount').value = rates.mmkToThb.mmk;
+            
+            updateTimestamp();
+            updateRateDisplays();
+            convertThbToMmk();
+            convertMmkToThb();
+        };
+        
+        function updateTimestamp() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            const timeString = now.toLocaleDateString('en-US', options);
+            
+            document.getElementById('last-updated').textContent = timeString;
+            document.getElementById('last-updated2').textContent = timeString;
+        }
+        
+        function updateRateDisplays() {
+            // THB to MMK rate display
+            document.getElementById('thb-rate-display').textContent = rates.thbToMmk.thb;
+            document.getElementById('mmk-rate-display').textContent = rates.thbToMmk.mmk.toLocaleString();
+            
+            // MMK to THB rate display
+            document.getElementById('mmk-rate-display2').textContent = rates.mmkToThb.mmk.toLocaleString();
+            document.getElementById('thb-rate-display2').textContent = rates.mmkToThb.thb;
+            
+            // Convert again to update all displays
+            convertThbToMmk();
+            convertMmkToThb();
+        }
+        
+        function convertThbToMmk() {
+            const thbAmount = parseFloat(document.getElementById('thb-amount').value) || 0;
+            const rate = rates.thbToMmk.mmk / rates.thbToMmk.thb;
+            const mmkAmount = thbAmount * rate;
+            
+            // Update results
+            document.getElementById('mmk-result').value = Math.round(mmkAmount);
+            document.getElementById('thb-display').textContent = thbAmount.toLocaleString();
+            document.getElementById('mmk-display').textContent = Math.round(mmkAmount).toLocaleString();
+            
+            updateTimestamp();
+        }
+        
+        function convertMmkToThb() {
+            const mmkAmount = parseFloat(document.getElementById('mmk-amount').value) || 0;
+            const rate = rates.mmkToThb.thb / rates.mmkToThb.mmk;
+            const thbAmount = mmkAmount * rate;
+            
+            // Update results
+            document.getElementById('thb-result').value = thbAmount.toFixed(2);
+            document.getElementById('mmk-display-input').textContent = mmkAmount.toLocaleString();
+            document.getElementById('thb-display-result').textContent = thbAmount.toFixed(2);
+            
+            updateTimestamp();
+        }
+        
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update active language button
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === (lang === 'en' ? 'English' : 
+                                       lang === 'my' ? 'မြန်မာ' : 
+                                       lang === 'th' ? 'ไทย' : '')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update all text elements
+            const t = translations[lang];
+            
+            // Marquee text
+            document.querySelector('.marquee span').textContent = t.marquee;
+            
+            // Public messages
+            document.getElementById('public-message-title').textContent = t.publicMessageTitle;
+            document.getElementById('message1').textContent = t.message1;
+            document.getElementById('message2').textContent = t.message2;
+            document.getElementById('message3').textContent = t.message3;
+            document.getElementById('message4').textContent = t.message4;
+            document.getElementById('message5').textContent = t.message5;
+            
+            // Converter titles
+            document.getElementById('thb-title').textContent = t.thbTitle;
+            document.getElementById('mmk-title').textContent = t.mmkTitle;
+            
+            // Labels
+            document.getElementById('thb-label').textContent = t.thbLabel;
+            document.getElementById('mmk-label').textContent = t.mmkLabel;
+            document.getElementById('thb-result-label').textContent = t.mmkResultLabel;
+            document.getElementById('mmk-result-label').textContent = t.thbResultLabel;
+            document.getElementById('mmk-input-label').textContent = t.mmkLabel;
+            
+            // Currency names
+            document.getElementById('thb-currency-label').textContent = t.thbCurrency;
+            document.getElementById('mmk-currency-label').textContent = t.mmkCurrency;
+            document.getElementById('mmk-input-currency-label').textContent = t.mmkCurrency;
+            document.getElementById('thb-result-currency-label').textContent = t.thbCurrency;
+            
+            // Last updated text
+            document.getElementById('last-updated').textContent = t.lastUpdated;
+            document.getElementById('last-updated2').textContent = t.lastUpdated;
+            
+            // Rate info
+            document.getElementById('thb-rate-info').innerHTML = 
+                `${t.rateText}: <span id="thb-rate-display">${rates.thbToMmk.thb}</span> THB = <span id="mmk-rate-display">${rates.thbToMmk.mmk.toLocaleString()}</span> MMK`;
+            
+            document.getElementById('mmk-rate-info').innerHTML = 
+                `${t.rateText}: <span id="mmk-rate-display2">${rates.mmkToThb.mmk.toLocaleString()}</span> MMK = <span id="thb-rate-display2">${rates.mmkToThb.thb}</span> THB`;
+            
+            // Footer text
+            document.getElementById('facebook-text').textContent = t.facebook;
+            document.getElementById('phone-text').textContent = t.phone;
+            document.getElementById('copyright-text').textContent = t.copyright;
+        }
+    </script>
 </body>
 </html>
